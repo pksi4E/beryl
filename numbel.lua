@@ -112,7 +112,8 @@ function findinverse(x, n)
 	to number x. Algorithm is based on
 	Extended Euclid algorithm.
 ]]
-	return
+
+	-- to be done
 end
 
 -- arg1 = tonumber(arg[1])
