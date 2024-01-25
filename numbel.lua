@@ -155,6 +155,24 @@ a, b = 200, 136
 r,s,t = eea(a, b)
 io.write(string.format("%d = nwd(%d, %d) = %d * a + %d * b = %d", r, a, b, s, t, r))
 
+function rank(g, n)
+--[[
+	Function that checks the rank of an element
+	modulo n.
+]]
+	if g == 1 then return 1 end
+	w = g
+	i = 1
+	while true do
+		i = i + 1
+		w = w * g
+		if w % n == 1 then
+			return i
+		end
+	end
+end
+
+
 -- arg1 = tonumber(arg[1])
 -- arg2 = tonumber(arg[2])
 -- arg3 = tonumber(arg[3])
