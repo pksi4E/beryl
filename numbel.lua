@@ -172,6 +172,18 @@ function rank(g, n)
 	end
 end
 
+function iscyclic(group, n)
+--[[
+	...
+]]
+	local group_rank = #group
+	for i, g in ipairs(group) do
+		if rank(g, n) == group_rank then
+			return true, g
+		end
+	end
+	return false
+end
 
 -- arg1 = tonumber(arg[1])
 -- arg2 = tonumber(arg[2])
