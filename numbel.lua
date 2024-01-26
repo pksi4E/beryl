@@ -185,6 +185,27 @@ function iscyclic(group, n)
 	return false
 end
 
+function generator(group)
+--[[
+
+]]
+	_, gen = iscyclic(group, group[#group]+1)
+	return gen
+end
+
+function isquadraticresidue(a, p)
+--[[
+	Function.
+]]
+	for i = 1, p - 1 then
+		local w = i ^ 2
+		if w % p == a then
+			return true
+		end
+	end
+	return false
+end
+
 -- arg1 = tonumber(arg[1])
 -- arg2 = tonumber(arg[2])
 -- arg3 = tonumber(arg[3])
