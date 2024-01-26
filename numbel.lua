@@ -197,13 +197,28 @@ function isquadraticresidue(a, p)
 --[[
 	Function.
 ]]
-	for i = 1, p - 1 then
+	for i = 1, p - 1 do
 		local w = i ^ 2
 		if w % p == a then
 			return true
 		end
 	end
 	return false
+end
+
+function quadres(p)
+--[[
+	Function that returns the table with
+	all quadratic residues modulo p,
+	i.e. from the multiplicative group Z_p,
+	where p is a prime number.
+]]
+	local t = {}
+	for i = 1, p - 1 do
+		local w = (i ^ 2) % p
+		t[w] = true
+	end
+	return t
 end
 
 -- arg1 = tonumber(arg[1])
