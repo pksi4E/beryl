@@ -151,9 +151,9 @@ function eea (a, b)
 	r = b0
 	return r, s, t
 end
-a, b = 200, 136
-r,s,t = eea(a, b)
-io.write(string.format("%d = nwd(%d, %d) = %d * a + %d * b = %d", r, a, b, s, t, r))
+-- a, b = 200, 136
+-- r,s,t = eea(a, b)
+-- io.write(string.format("%d = nwd(%d, %d) = %d * a + %d * b = %d\n", r, a, b, s, t, r))
 
 function rank(g, n)
 --[[
@@ -221,6 +221,68 @@ function quadres(p)
 	return t
 end
 
+function _eulcrit(a, p)
+--[[ Euler criterium to calculate quadratic residue. ]]
+	local pow = (p - 1) / 2
+	local w = a ^ pow
+	if w % p == 1 then
+		return true
+	else
+		return false
+	end
+end
+
+function counttime(f, ...)
+	local starttime = os.clock()
+	f(...)
+	io.write(string.format("Time: %s seconds", os.clock() - starttime))
+end
+
+function tobin(num)
+--[[
+	Function returns string with binary representation of a number num.
+]]
+	return (num == 0) and '' or tobin(num // 2) .. (num % 2)
+end
+	
+function repr64bit(binarystr)
+	local lenstr = #binarystr
+	local len = 64
+	if lenstr < 64 then
+		len = len - lenstr
+	end
+	local braki = ''
+	for i = 1, len do braki = braki .. 0 end
+	print(#braki)
+	return braki .. binarystr
+end
+
+function hamm(x)
+--[[
+	Hamming distance.
+]]
+	local b = tobin(x)
+	local count = 0
+	for i = 1, string.len(b) do
+		if string.sub(b, i, i) == '1' then count = count + 1 end
+	end 
+	return count
+end
+
+function ifpow2(num)
+--[[
+	Function checks if num is a power of 2.
+]]
+	local b = tobin(num)
+	local count = 0
+	for i = 1, #b do
+		if b:sub(i, i) == '1' then count = count + 1 end
+	end
+	return count == 1
+end
+	
+	-- print("ifpow2: ", ifpow2(arg[1]))
+	
 -- arg1 = tonumber(arg[1])
 -- arg2 = tonumber(arg[2])
 -- arg3 = tonumber(arg[3])
