@@ -329,7 +329,19 @@ function randombits(n, forceodd)
 	return s
 end
 
-
+function posdivisors(n)
+--[[
+	Function returns a set of positive divisors
+	of a number n.
+]]
+	local t = {}
+	for i = 1, n // 2 do
+		if ydivx(i, n) then
+			table.insert(t, i)
+		end
+	end
+	return t
+end
 	
 -- arg1 = tonumber(arg[1])
 -- arg2 = tonumber(arg[2])
