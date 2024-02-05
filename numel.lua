@@ -245,6 +245,13 @@ function tobin(num)
 	return (num == 0) and '' or tobin(num // 2) .. (num % 2)
 end
 
+function binlength(num)
+--[[
+	Function returns number of bits of a decimal number.
+]]
+	return math.floor(math.log(num, 2)) + 1
+end
+
 function bin2dec(s)
 	local n = 0
 	for i = 0, #s - 1 do
@@ -342,6 +349,29 @@ function posdivisors(n)
 	end
 	return t
 end
+
+function sumdivisors(n)
+	local t = posdivisors(n)
+	local sum = 0
+	for _, i in ipairs(t) do
+		sum = sum + i
+	end
+	return sum
+end
+
+function sumdivisors2(n)
+	--[[
+		Function returns a set of positive divisors
+		of a number n.
+	]]
+		local sum = 0
+		for i = 1, n // 2 do
+			if ydivx(i, n) then
+				sum = sum + i
+			end
+		end
+		return sum
+	end
 	
 -- arg1 = tonumber(arg[1])
 -- arg2 = tonumber(arg[2])
