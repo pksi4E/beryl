@@ -364,15 +364,87 @@ function sumdivisors2(n)
 		Function returns a set of positive divisors
 		of a number n.
 	]]
-		local sum = 0
-		for i = 1, n // 2 do
-			if ydivx(i, n) then
-				sum = sum + i
+	local sum = 0
+	for i = 1, n // 2 do
+		if ydivx(i, n) then
+			sum = sum + i
+		end
+	end
+	return sum
+end
+
+function _rhopollard (n, x1, f)
+--[[
+	function that 
+]]
+	-- local x = x1
+	-- local xprim = f(x) % n
+	-- local p = gcd(x - xprim, n)
+	-- while p == 1 do
+	-- 	x = f(x) % n
+	-- 	xprim = f(xprim) % n
+	-- 	xprim = f(xprim) % n
+	-- 	p = gcd(x - xprim, n)
+	-- end
+	-- if p == n then
+	-- 	return "error"
+	-- else
+	-- 	return p
+	-- end
+	local x = 2
+	local y = 2
+	local d = 1
+	while d == 1 do
+		x = f(x)
+		y = f(f(y))
+		d = gcd(math.abs(x - y), n)
+	end
+	if d == n then
+		return "error"
+	else
+		return d
+	end
+end
+
+function primeset(k)
+--[[
+	function returns the set of first k primes, the number of primes is k
+]]
+	local i = 0
+	local p = 2
+	local t = {}
+	while true do
+		if isprime(p) then
+			table.insert(t, p)
+			i = i + 1
+			if i == k then
+				break
 			end
 		end
-		return sum
+		p = p + 1
 	end
-	
+	return t
+end
+
+function continuedfractionexpansion(a, b)
+--[[
+	Function that calculated continued fraction expansion
+	of a fraction a/b.
+]]
+	local x = a
+	local y = b
+	local t = {}
+	while y ~= 0 do
+		local e = x // y
+		local r = x % y
+		x = y
+		y = r
+		table.insert(t, e)
+		end
+
+	return t
+end
+
 -- arg1 = tonumber(arg[1])
 -- arg2 = tonumber(arg[2])
 -- arg3 = tonumber(arg[3])
@@ -385,3 +457,18 @@ function sumdivisors2(n)
 -- print("is prime? ", isprime(arg3))
 -- print("are relatively prime? ", relprime(arg1, arg2))
 -- print("euler ", eulerphi(arg4))
+
+-- sets
+function isadmissible(t)
+	for i = 1, #t-1 do
+		if not (t[i] < t[i+1]) then
+			return false
+		end
+	end
+	if #t <= t[1] then
+		return true
+	else
+		return false
+	end
+end
+
