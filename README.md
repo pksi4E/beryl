@@ -1,5 +1,5 @@
-# numbel
-Number theory library for Lua.
+# blu
+**blu** - Num**b**er theory **l**ibrary for L**u**a.
 
 ## functions
 ydivx  
