@@ -1,4 +1,4 @@
-require "..numbel"
+require "..blu"
 luaunit = require("luaunit")
 
 function test_ydivx_positives()
