@@ -1,5 +1,5 @@
 -- blu.lua
-local bint = require 'bint'
+local bint = require 'bint'(2048)
 
 function ydivx(y, x)
 --[[
@@ -8,27 +8,14 @@ function ydivx(y, x)
 	divides number x, that is in mathematical syntax: y|x
 	x is a base number, y is a number to check if it divides x
 	y divides x, if there exists z such that x = y * z
-	@ver. 1.00
 ]]
-
-	-- if x is zero then every number divides zero
-	-- if x == 0 then return true end
-	-- y = math.abs(y)
-	-- x = math.abs(x)
-	-- for z = 1, x do
-	-- 	if x == y * z then
-	-- 		return true
-	-- 	elseif y * z > x then
-	-- 		return false
-	-- 	end
-	-- end
-	-- return false
-	-- jeden tez jest zawsze dzielnikiem, wiec
-	-- nie trzeba caly czas robic petle az do x, moze tylko do x-1
-	-- ta sama liczba tez jest zawsze dzielnikiem, wiec
-	-- mozna tez zaczac petle od 2 a nie od 1
-
-	return x // y == x / y
+	if x > math.maxinteger then
+		if (not bint.isbint(x)) then
+			error("NotBintError")
+		end
+		return bint.iszero(x % y)
+	end
+	return x % y == 0
 end
 
 function gcd(a, b)
@@ -489,6 +476,16 @@ function isadmissible(t)
 	end
 end
 
+function factorial(n)
+--[[
+	Function that return a factorial of a number.
+]]
+	if n <= 2 then
+		return n
+	else
+		return n * factorial(n - 1)
+	end
+end
 -- return {
 -- 	tobin = tobin,
 -- 	ydivx = ydivx,
