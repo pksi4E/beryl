@@ -34,7 +34,7 @@ function gcd(a, b)
 		x = b
 		y = a; end
 	
-	while y ~= 0 do
+	while y ~= bint.zero() do
 		r = x % y
 		x = y
 		y = r ;end
@@ -228,8 +228,14 @@ function tobin(num)
 --[[
 	Function returns string with binary representation of a number num.
 ]]
-	if type(num) == type({}) then zero = bint(0) else zero = 0 end
-	return (num == zero) and '' or tobin(num // 2) .. tostring(num % 2)
+	-- if type(num) == type({}) then zero = bint(0) else zero = 0 end
+	-- local zero = bint.zero()
+	-- if num > math.maxinte(ger then zero = bint(0) end
+	if (not bint.isbint(num)) then
+		error("NotBintError")
+	else
+		return (num == bint.zero()) and '' or tobin(num // 2) .. tostring(num % 2)
+	end
 end
 
 function binlength(num)
@@ -485,6 +491,19 @@ function factorial(n)
 	else
 		return n * factorial(n - 1)
 	end
+end
+
+function powmod(x, c, n)
+--[[
+	Function that permorms x^c % n.
+]]
+	local z = 1
+	local binc = tobin(c)
+	for i = 1, #binc do
+		z = z*z % n
+		if tonumber(binc:sub(i, i)) == 1 then z = z*x % n end
+	end
+	return z
 end
 -- return {
 -- 	tobin = tobin,
