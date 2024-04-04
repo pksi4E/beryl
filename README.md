@@ -1,5 +1,5 @@
-# blu
-**blu** - Num**b**er theory **l**ibrary for L**u**a.
+# beryl
+**beryl** - Num**ber** theor**y** **l**ibrary for Lua.
 
 ## functions
 ydivx  
@@ -32,4 +32,5 @@ sumdivisors
 sumdivisors2  
 _rhopollard  
 primeset  
-isadmissible  
+isadmissible
+powmod
