@@ -32,5 +32,7 @@ sumdivisors
 sumdivisors2  
 _rhopollard  
 primeset  
-isadmissible
-powmod
+isadmissible  
+powmod  
+fibonaccinumber  
+fermatnumber  
