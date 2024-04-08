@@ -526,3 +526,14 @@ function fermatnumber(n)
 	local p = 2^n
 	return 2^p + 1
 end
+
+-- TODO: implement meertens function
+function meertens(base, num)
+--[[
+	meertens function
+]]
+	local k = math.log(num, base) + 1
+	-- for i = 1, k - 1 do
+		
+	-- end
+end

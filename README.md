@@ -1,4 +1,6 @@
 # beryl
+[![Generic badge](https://img.shields.io/badge/Made_with-Lua-blue.svg)](https://shields.io/)  
+🚧 Work in progress. 🚧
 **beryl** - Num**ber** theor**y** **l**ibrary for Lua.
 
 ## functions
